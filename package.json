@@ -8,7 +8,9 @@
     "staging": "node build/server.js",
     "build": "tsup src --out-dir build",
     "eslint": "eslint src --ext .ts --fix",
-    "prisma:generate": "npx prisma generate"
+    "prisma:generate": "npx prisma generate",
+    "prisma:migrate": "npx prisma migrate dev",
+    "prisma:studio": "npx prisma studio"
   },
   "keywords": [],
   "author": "",
