@@ -1,6 +1,6 @@
 import { prisma } from '@/lib/prisma'
 import { hash } from 'bcryptjs'
-import { PrismaUsersRepositories } from '../repositories/prisma-users-repository'
+import { PrismaUsersRepositories } from '../repositories/prisma-users.repository'
 
 interface RegisterUserServiceProps {
   name: string
