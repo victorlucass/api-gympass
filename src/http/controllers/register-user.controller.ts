@@ -28,7 +28,7 @@ export async function registerUserController(
       })
     }
 
-    return reply.status(500).send()
+    throw error
   }
 
   return reply.status(201).send('Usuário criado com sucesso ✅')
