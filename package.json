@@ -6,6 +6,8 @@
   "scripts": {
     "start:dev": "tsx watch src/server.ts",
     "start": "node build/server.js",
+    "test": "vitest run",
+    "test:watch": "vitest",
     "build": "tsup src --out-dir build",
     "eslint": "eslint src --ext .ts --fix",
     "prisma:generate": "npx prisma generate",
@@ -25,7 +27,9 @@
     "prisma": "5.12.1",
     "tsup": "8.0.2",
     "tsx": "4.7.2",
-    "typescript": "5.4.5"
+    "typescript": "5.4.5",
+    "vite-tsconfig-paths": "4.3.2",
+    "vitest": "1.5.0"
   },
   "dependencies": {
     "@prisma/client": "5.12.1",
