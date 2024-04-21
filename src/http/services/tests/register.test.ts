@@ -1,5 +1,5 @@
 import { describe } from 'node:test'
-import { test, expect, beforeEach } from 'vitest'
+import { it, expect, beforeEach } from 'vitest'
 import { RegisterUserService } from '../register-user.service'
 import { InMemoryRepository } from '../../repositories/in-memory/in-memory-repository'
 import { compare } from 'bcryptjs'
@@ -14,7 +14,7 @@ describe('Register Use Case', () => {
     sut = new RegisterUserService(repository)
   })
 
-  test('should create user', async () => {
+  it('should create user', async () => {
     const { user } = await sut.execute({
       name: 'John Doe',
       email: '4lUesh@example.com',
@@ -24,7 +24,7 @@ describe('Register Use Case', () => {
     await expect(user.id).toEqual(expect.any(String))
   })
 
-  test('should hash user password upon registration', async () => {
+  it('should hash user password upon registration', async () => {
     const { user } = await sut.execute({
       name: 'John Doe',
       email: '4lUesh@example.com',
@@ -39,7 +39,7 @@ describe('Register Use Case', () => {
     await expect(isPasswordCorrectlyHashed).toBe(true)
   })
 
-  test('should not be able to register with same email', async () => {
+  it('should not be able to register with same email', async () => {
     const email = '4lUesh@example.com'
 
     await sut.execute({

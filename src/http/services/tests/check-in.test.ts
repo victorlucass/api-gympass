@@ -1,5 +1,5 @@
 import { InMemoryCheckInsRepository } from '@/http/repositories/in-memory/in-memory-checkins-repository'
-import { beforeEach, describe, expect, test } from 'vitest'
+import { beforeEach, describe, expect, it } from 'vitest'
 import { CheckInsService } from '../checkin.service'
 
 let repository: InMemoryCheckInsRepository
@@ -11,7 +11,7 @@ describe('AuthenticateUserService', () => {
     sut = new CheckInsService(repository) // sut -> system under test
   })
 
-  test('should be able to check in', async () => {
+  it('should be able to check in', async () => {
     const { checkIn } = await sut.execute({
       gymId: 'gym-01',
       userId: 'user-01',

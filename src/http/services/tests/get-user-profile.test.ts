@@ -1,5 +1,5 @@
 import { InMemoryRepository } from '@/http/repositories/in-memory/in-memory-repository'
-import { test, describe, beforeEach, expect } from 'vitest'
+import { it, describe, beforeEach, expect } from 'vitest'
 import { GetUserProfileService } from '../get-user-profile.service'
 import { UserProfileExistsError } from '../errors/user-profile-exists-error'
 
@@ -12,7 +12,7 @@ describe('Get User Profile Service', () => {
     sut = new GetUserProfileService(repository)
   })
 
-  test('should be able to get user profile', async () => {
+  it('should be able to get user profile', async () => {
     const { id } = await repository.create({
       name: 'John Doe',
       email: '4lUesh@example.com',
@@ -26,7 +26,7 @@ describe('Get User Profile Service', () => {
     await expect(user.user.id).toEqual(id)
   })
 
-  test('should not be able to get user profile with wrong id', async () => {
+  it('should not be able to get user profile with wrong id', async () => {
     await expect(() =>
       sut.execute({
         userId: 'non-existing-id',
