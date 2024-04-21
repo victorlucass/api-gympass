@@ -1,10 +1,10 @@
 import { describe } from 'node:test'
 import { test, expect } from 'vitest'
 // import { PrismaUsersRepositories } from '../repositories/prisma-users.repository'
-import { RegisterUserService } from './register-user.service'
-import { InMemoryRepository } from '../repositories/in-memory/in-memory-repository'
+import { RegisterUserService } from '../register-user.service'
+import { InMemoryRepository } from '../../repositories/in-memory/in-memory-repository'
 import { compare } from 'bcryptjs'
-import { UserAlreadyExistsError } from './errors/user-already-exists-error'
+import { UserAlreadyExistsError } from '../errors/user-already-exists-error'
 
 describe('Register Use Case', () => {
   test('should create user', async () => {
