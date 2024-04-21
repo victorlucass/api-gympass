@@ -1,14 +1,19 @@
 import { InMemoryRepository } from '@/http/repositories/in-memory/in-memory-repository'
 import { AuthenticateService } from '../authenticate-user.service'
 import { hash } from 'bcryptjs'
-import { describe, expect, test } from 'vitest'
+import { beforeEach, describe, expect, test } from 'vitest'
 import { InvalidCredentialsError } from '../errors/invalid-credentials-error'
 
-describe('AuthenticateUserService', () => {
-  test('should be able to authenticate', async () => {
-    const repository = new InMemoryRepository()
-    const sut = new AuthenticateService(repository) // sut -> system under test
+let repository: InMemoryRepository
+let sut: AuthenticateService
 
+describe('AuthenticateUserService', () => {
+  beforeEach(() => {
+    repository = new InMemoryRepository()
+    sut = new AuthenticateService(repository) // sut -> system under test
+  })
+
+  test('should be able to authenticate', async () => {
     await repository.create({
       name: 'John Doe',
       email: '4lUesh@example.com',
@@ -24,9 +29,6 @@ describe('AuthenticateUserService', () => {
   })
 
   test('should not be able to authenticate with wrong email', async () => {
-    const repository = new InMemoryRepository()
-    const sut = new AuthenticateService(repository) // sut -> system under test
-
     expect(
       async () =>
         await sut.execute({
@@ -37,9 +39,6 @@ describe('AuthenticateUserService', () => {
   })
 
   test('should not be able to authenticate with wrong password', async () => {
-    const repository = new InMemoryRepository()
-    const sut = new AuthenticateService(repository) // sut -> system under test
-
     await repository.create({
       name: 'John Doe',
       email: '4lUesh@example.com',
