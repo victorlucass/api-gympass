@@ -1,7 +1,7 @@
 import { InMemoryRepository } from '@/http/repositories/in-memory/in-memory-repository'
 import { it, describe, beforeEach, expect } from 'vitest'
 import { GetUserProfileService } from '../get-user-profile.service'
-import { UserProfileExistsError } from '../errors/user-profile-exists-error'
+import { ResourceNotFoundError } from '../errors/resource-not-found'
 
 let repository: InMemoryRepository
 let sut: GetUserProfileService
@@ -31,6 +31,6 @@ describe('Get User Profile Service', () => {
       sut.execute({
         userId: 'non-existing-id',
       }),
-    ).rejects.toBeInstanceOf(UserProfileExistsError)
+    ).rejects.toBeInstanceOf(ResourceNotFoundError)
   })
 })
